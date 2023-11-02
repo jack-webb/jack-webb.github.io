@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+{% include head.html %}
+<body>
+  <main>
+    {% include header.html %}
+    {{ content }}
+    {% comment %}
+    {% include footer.html %}
+    {% endcomment %}
+  </main>
+  {% include javascript.html %}
+</body>
+</html>

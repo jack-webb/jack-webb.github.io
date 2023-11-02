@@ -1,0 +1,14 @@
+---
+layout: home
+title: "Archive"
+---
+<div class="subtitle">Android Developer and Software Engineer</div>
+<ul class="article-list">
+{% for post in site.posts %}
+    {% if post.layout == 'post' %} 
+        {% include post-list-item.html post=post %}
+    {% else %} 
+        {% include talk-list-item.html post=post %}
+    {% endif %}
+{% endfor %}
+</ul>

@@ -1,0 +1,46 @@
+<li class="list-item">
+    <a href="{{ post.watch_url | default: post.slides_url }}">
+      <span class="list-title">Talk: {{ post.title }} @ {{ post.event }}</span>
+    </a>
+
+    <br />
+
+    <span class="list-secondary-text">
+      {{ post.date | date_to_string: "ordinal", "UK" }} ―
+
+      {% if post.slides_url and post.slides_url != '' %}
+        <a class="list-secondary-link" href="{{ post.slides_url }}">Slides
+          <i class="fa-solid fa-file-powerpoint list-talk-link-icon"></i>
+        </a>
+      {% endif %}
+
+      {% if post.watch_url and post.watch_url != '' %}
+          <a class="list-secondary-link" href="{{ post.watch_url }}">
+            Watch <i class="fa-solid fa-video list-talk-link-icon"></i>
+          </a>
+      {% endif %}
+
+      {% if post.github_url and post.github_url != '' and post.github_name and post.github_name != '' %}
+          <a class="list-secondary-link" href="{{ post.github_url }}">
+          {{ post.github_name }} <i class="fa-brands fa-github list-talk-link-icon"></i>
+        </a>  
+      {% endif %}
+
+      {% for name in post.link_names %}
+          <a class="list-secondary-link" href="{{ post.link_urls[forloop.index0] }}">
+          {{ name }} <i class="fa-solid fa-link list-talk-link-icon"></i>
+        </a>
+          
+      {% endfor %}
+    </span>
+</li>
+<!--
+ title: "Supercharge your (Android) terminal experience"
+event_name: "Droidcon London 2023"
+event_url: "https://london.droidcon.com/"
+slides_url: "https://london.droidcon.com/"
+watch_url: "https://london.droidcon.com/"
+link_names: ["First link", "Second link", "Third link"]
+link_urls: ["https://london.droidcon.com/", "https://london.droidcon.com/", "https://london.droidcon.com/"]
+thumb_image: "img/thinkpad.jpg"
+ -->

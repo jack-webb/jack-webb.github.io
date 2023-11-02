@@ -1,0 +1,190 @@
+html {
+    height: 100%;
+    font-size: 120%;
+}
+
+body {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: 300;
+    line-height: 1.45;
+    display: flex;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding-bottom: 1em;
+}
+
+h1 {
+    font-weight: 700;
+    margin: 0;
+    display:inline-block; 
+}
+
+.subtitle {
+    font-weight: 300;
+    margin: .4em 0 0;
+    font-style: italic;
+}
+
+h2 {
+    font-weight: 300;
+    margin: .4em 0 0;
+    font-style: normal;
+    text-transform: capitalize;
+}
+
+
+main {
+    display: block;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 2em;
+    max-width: 60em;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 1em 0;
+    display: block;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+a:hover {
+    color: #555;
+    transition: all .2s ease;
+}
+
+p > a {
+    text-decoration: underline;
+}
+
+nav {
+    margin: 0 0.5em;
+}
+
+nav li {
+    margin: 0;
+    margin-left: 1em;
+    padding: 0;
+    display: inline-block;
+}
+
+
+.header {
+    display: flex;
+    flex: 1 0 100px;
+    align-items: center;
+}
+
+.list-secondary-text {
+    color: #aaa;
+    vertical-align: middle;
+}
+
+.list-title {
+    font-size: 180%;
+    padding-right: 0.3em;
+}
+
+.list-secondary-link {
+    color: #aaa;
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+.list-secondary-link:last-child {
+    margin-right: 0;
+}
+
+.list-secondary-link-icon {
+    padding-left: 0.2em;
+    padding-right: 0em;
+}
+
+.article {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+p::first-letter {
+    padding-left: 1em;
+}
+
+.article p {
+    margin: 1.5em 0;
+}
+
+blockquote {
+    text-align: left;
+    border-left: #aaa 1px solid;
+    color: #ccc;
+    margin: 2em 0;
+    padding: 0;
+    /*margin-left: 0.5em;*/
+    padding-left: 1em;
+    padding-right: 1.5em;
+    font-style: italic;
+}
+
+.article h6 {  /* Used for image captions */
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    font-size: 90%;
+    font-weight: 300;
+    color: #ccc;
+    padding-bottom: 1em;
+}
+
+.article img {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 1em;
+}  
+
+.article-list li {
+    margin: 1.75em 0;
+}
+
+
+@media (max-width: 800px) {
+    .list-date {
+        width: auto;
+    }
+
+    main {
+        width: auto;
+        margin: 0 auto;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    .article-list li {
+        margin: 2.25em 0;
+        text-align: justify;
+    }
+}
+
+@media (max-width: 465px) {}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #131313;
+        color: #fff;
+    }
+    a { color: #fff; }
+    a:hover { color: #aaa; }
+    .list-secondary-link {color: #aaa; }
+    .list-secondary-link:hover {color: #fff; }
+}
+
+
