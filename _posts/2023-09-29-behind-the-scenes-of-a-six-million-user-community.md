@@ -175,3 +175,6 @@ Ansible - I was one point of failure, add ansible tasks for everything
 
 
 Staff application form google scripts for filtering and validating
+
+
+Able to do unusual or "risky" stuff (eg hamming removals) because we are a small team and have humans in the loop, compare to big companies who can't take as much risk

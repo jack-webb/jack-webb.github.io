@@ -114,8 +114,8 @@ nav li {
     line-height: 1.6;
 }
 
-p::first-letter {
-    padding-left: 1em;
+strong {
+    font-weight: 700;
 }
 
 .article p {

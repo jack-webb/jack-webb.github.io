@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Assisted Injection with Dagger and Hilt: A Double-Edged Sword"
-subtitle: "Whether you're migrating to Hilt or want to specify your dependencies at runtime, find out how with this explainer, and red flags to look out for"
+subtitle: "Whether you're migrating to Hilt or need to specify dependencies at runtime, find out how with this explainer, and learn some red flags to look out for"
+image: /images/assisted-inject/android.jpg
 ---
 
 ![](/images/assisted-inject/android.jpg)
@@ -99,19 +100,13 @@ excalibur.name == "Excalibur"
 
 This short example doesn't look like it's saved much code (in fact, our snippet is longer!), but now that we don't have to manually provide all the dependencies in our Factory, we can scale much more easily. Adding a new dependency is just a matter of injecting it where it's required - we no longer have to go and update all of our Factories in the process. Easy peasy! Let's break it down to see where the magic happens:
 
-#### @AssistedInject
+**_@AssistedInject_** - Where you might ordinarily use @Inject on your classes' constructor, @AssistedInject lets us mark the class as not having all of its dependencies injectable.
 
-Where you might ordinarily use @Inject on your classes' constructor, @AssistedInject lets us mark the class as not having all of its dependencies injectable.
+**_@Assisted_** - Annotate your to-be-provided dependencies, so Dagger recognises it shouldn't try to inject them itself.
 
-#### @Assisted
+**_@AssistedFactory_** - Just like a regular Factory, but is created by Dagger at compile time, and includes any provided dependencies for us!
 
-Annotate your to-be-provided dependencies, so Dagger recognises they're not to be injected.
-
-#### @AssistedFactory
-
-Acts just like our regular Factory, but is created by Dagger at compile time to include the dependencies for us!
-
-## The Catch - 
+## The Catch - Are you hiding something?
 
 If you've made it to here and thought "that's fantastic, that solves my problem perfectly!", you're in the same spot as me. I learned about this when migrating some particularly old and tricky Presenter classes. I added `@AssistedInject`, and just like that, these tricky classes were made easily injectable. However, as I learned, there is a caveat you should be aware of. Less a caveat, more a 'missing the forest for the trees'. There are absolutely times when Assisted Injection is the best tool for the job, but look closely before you wield it. 
 
@@ -119,17 +114,17 @@ If you find yourself resorting to Assisted Injection frequently, especially in n
 
 ### Inversion of Control
 
-I said at the beginning that we don't really have to think about initialization when using dependency injection, but that's not strictly true. What we're really doing is using DI to achieve Inversion of Control (IOC). IOC is a big deal because it brings so many benefits: Lower coupling of components, better testability, more flexible reusability, and ease-of-use, to name a few. 
+I said at the beginning that we don't really have to think about initialization when using dependency injection, but that's not strictly true. What we're really doing is using DI to achieve _Inversion of Control_. This is important because it brings so many benefits: Lower coupling of components, better testability, more flexible reusability, and ease-of-use, to name a few. 
 
-This principle shifts the responsibility of dependency initialization onto the class itself, instead of the developer manually creating the requisite objects and instantiating the class they want to use. 
+This design principle shifts the responsibility of dependency initialization onto the class itself, instead of the developer manually creating the requisite objects and instantiating the class they want to use. 
 
-In an ideal world, your class already knows what dependencies it needs, and those classes already know what dependencies they need. The chain continues until you reach the bottom, where classes either don't have dependencies or constructor arguments, or those can be provided through other means (Network libraries like Retrofit and OkHttp are classic examples). When you start using Assisted Injection, you start creating these dependencies directly in code, breaking that nice chain of pre-defined dependencies in your dependency graph.
+In an ideal world, your class already knows what dependencies it needs, and those classes already know what dependencies they need. The chain continues until you reach the bottom, where classes either don't have dependencies or constructor arguments, or those can be provided through other means (Network libraries like Retrofit and OkHttp, for example). When you start using Assisted Injection, you start creating these dependencies directly in code, breaking that nice chain of pre-defined dependencies in your dependency graph. Instead of reaching the bottom, you now have a boundary between injectable classes and ones you have to instantiate yourself.
 
 Make sure you're using Assisted Injection only in instances where you can't pre-define your dependencies. In good architecture, this will be in isolation, in a way that won't cascade to other classes in your codebase. If you're not careful, your code will end up tightly coupled to its dependencies, making it difficult to test and maintain.
 
 ### Separation of Concerns
 
-Imagine we're creating a sword for our adventurer. Our code might look like this to start. Let's assume our blacksmith is already provided by Dagger, for the sake of brevity. 
+Imagine we're creating a sword for our adventure. Our code might look like this to start. Let's assume our blacksmith is already provided by Dagger, for the sake of brevity. 
 
 ```kotlin
 class Sword @AssistedInject constructor(
@@ -142,7 +137,7 @@ interface SwordFactory {
     fun create(name: String): Sword
 }
 
-class Adventurer @Inject(
+class Adventure @Inject(
     @Inject private var swordFactory: SwordFactory
 ){
     private val sword
@@ -169,29 +164,30 @@ interface SwordFactory {
     fun create(name: String, metal: Metal): Sword
 }
 
-class Adventurer @Inject(
+class Adventure @Inject(
     @Inject private val swordFactory: SwordFactory,
     @Inject private val metalStorage: MetalStorage
 ){
     private val sword
  
     init {
-        val steelForMySword = metalStorage.getSteel()
+        val steel = metalStorage.getSteel()
 
-        sword = swordFactory.create(
-            "Excalibur",
-            steelForMySword
-        ) 
+        sword = swordFactory.create("Excalibur", steel)
     }
 
     fun goOnAdventure() { ... }
 }
 ```
 
-Spot the problem? Our Adventurer is now responsible for getting the material for their sword. That's no good - they should be off slaying dragons and rescuing maidens!
+Spot the problem? Our Adventure is now responsible for getting the material for their sword.
 
-This is a classic Separation of Concerns violation. The Adventurer shouldn't need to know about getting the steel, because that's not their job. Now they're doing two things, our code is more coupled and harder to test. What if our method of obtaining materials changes, or different adventurers want swords of different materials? We'd have to modify our Adventurer class, when it's not necessary.
+This is a classic Separation of Concerns violation. The Adventure shouldn't need to know about getting the steel, because that's not their job. Now they're doing two (unrelated) things, so our code is more coupled and harder to test. What if our method of obtaining materials changes, or different adventures want swords made from different materials? We'd have to modify our Adventure class when it's not necessary.
 
-When you use Assisted Injection, consider who is really responsible for providing these additional parameters? You could be bloating a class with responsibilities that lie outside its domain.
+When you use Assisted Injection, consider who is really responsible for providing these parameters. You could be bloating a class with responsibilities that lie outside its domain. That means more coupling, and more ugliness down the line.
 
-## A Happy Ever After
+## A Happily Ever After
+
+![](/images/assisted-inject/castle.jpg)
+
+Assisted Injection is a great time-saver, but, like all legendary tools, it must be wielded with caution. Treat it with respect, and it will serve you valiantly in your quest, cutting through DI complexities in your way. But, before you dive into battle, make sure you're not masking code smells or bad architecture, lest you find a nasty final boss later on your mission. Follow this guide, and you'll live happily ever after. Happy coding!
