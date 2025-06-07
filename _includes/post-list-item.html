@@ -1,0 +1,14 @@
+<li class="list-item">
+
+    <a href="{{ post.url | relative_url }}" title="{{ post.title }}">
+        <span class="list-title">{{ post.title }}</span>
+        <span class="list-secondary-text">{% capture words %}
+      {{ include.post.content | number_of_words }}
+    {% endcapture %}
+    {% unless words contains "-" %}
+      {{ words | plus: 250 | divided_by: 250 }}
+    {% endunless %} min read <i class="fa-solid fa-arrow-right"></i></span>    
+    </a>
+    <br />
+    <span class="list-secondary-text">{{ post.date | date_to_string: "ordinal", "UK" }} ― {{ post.subtitle }}</span>
+</li>

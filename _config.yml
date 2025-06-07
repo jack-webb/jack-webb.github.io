@@ -1,0 +1,13 @@
+name: Jack Webb
+url: https://archive.jackwebb.me
+baseurl: "" 
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+plugins:
+  - jekyll-nbsp

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+{% include head.html %}
+<body>
+  <main>
+    {% include header.html %}
+    <div class="subtitle-wrapper">
+      <span class="subtitle">{{ page.title }}</span>
+      <span class="list-secondary-text post-date">{{ page.date | date_to_string: "ordinal", "UK" | nbsp }}</span>
+    </div>
+    <div class="article">
+      {{ content }}
+    </div>
+    {% include share-buttons.html %}
+  </main>
+  {% include javascript.html %}
+</body>
+</html>
