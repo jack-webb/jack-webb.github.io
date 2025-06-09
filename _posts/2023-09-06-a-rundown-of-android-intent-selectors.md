@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "A rundown of Android Intent Selectors - You're building intents wrong!"
-subtitle: "I was thrown for a loop writing this feature to open the user's browser ― Republished from the ASOS Tech Blog"
+subtitle: "I was thrown for a loop writing this feature to open the user's browser"
 image: /images/intent-selector/hero.webp
+published: true
 ---
 
-> This post was originally published [here](https://medium.com/asos-techblog/a-rundown-of-android-intent-selectors-youre-building-intents-wrong-fdb8d3e58ce2) on the [ASOS Tech Blog](https://medium.com/asos-techblog).
-
-**Does your app make this common Android faux-pas? This post explores a recent learning about Android Intents, and a common ‘gotcha’ that you might not even know you’re making.**
-
-![](/images/intent-selector/hero.webp)
+###### This post was originally published [here](https://medium.com/asos-techblog/a-rundown-of-android-intent-selectors-youre-building-intents-wrong-fdb8d3e58ce2) on the [ASOS Tech Blog](https://medium.com/asos-techblog).
 
 How do you open a link in the user's browser? You know, Chrome, Firefox, Samsung Internet. Well, you use an intent of course! 
 
@@ -104,7 +101,9 @@ targetIntent.selector = emptyBrowserIntent
 
 The selector property allows us to use the targeted apps from the first intent to open the second. Huzzah!
 
-![](/images/intent-selector/result.gif)
+  ![](/images/intent-selector/result.gif)
+<div class="img-small">
+</div>
 
 Now we can use ASOS on mobile web, no problem!It really is as simple as that! Instead of relying on the URI to determine how our app should be opened, we can more accurately specify our requirements with a second intent. You can even add a second category to narrow the selection of apps even more; activities must satisfy all the categories you specify to be included as a target for your intent.
 

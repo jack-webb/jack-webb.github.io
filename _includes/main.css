@@ -68,7 +68,7 @@ main {
     display: block;
     margin: 2em auto 0;
     padding: 2em;
-    max-width: 60em;
+    max-width: 50em;
 }
 
 .subtitle {
@@ -99,7 +99,7 @@ main {
 }
 
 .list-title {
-    font-size: 150%;
+    font-size: 180%;
     padding-right: 0.3em;
 }
 
@@ -139,7 +139,6 @@ main {
     font-size: 90%;
     font-weight: 300;
     color: #666;
-    padding-bottom: 1em;
 }
 
 .article img {
@@ -147,6 +146,34 @@ main {
     width: 95%;
     margin: 0 auto;
     padding-top: 1em;
+}
+
+.img-small {
+    width: 60% !important;
+    max-width: 400px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.img-xsmall {
+    width: 35% !important;
+    max-width: 220px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.img-small img {
+    width: 60% !important;
+    max-width: 400px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.img-xsmall img {
+    width: 35% !important;
+    max-width: 220px !important;
+    display: block;
+    margin: 0 auto;
 }
 
 .article-list li {
@@ -248,4 +275,18 @@ blockquote {
     .subtitle {
         color: #ccc;
     }
+}
+
+.header-title {
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+    flex: 0 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 2em;
+}
+
+.post-title-section {
+    margin-bottom: 1.5em;
 }

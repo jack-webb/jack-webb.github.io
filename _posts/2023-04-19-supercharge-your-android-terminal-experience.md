@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Supercharge your (Android) terminal experience"
-subtitle: "A tour of the command line tools I use every day as an Android Engineer ― Republished from the ASOS Tech Blog"
+subtitle: "A tour of the command line tools I use every day as an Android Engineer"
+published: true
 ---
 
-> This post was originally published [here](https://medium.com/asos-techblog/supercharge-your-android-terminal-experience-c71448bf40cc) on the [ASOS Tech Blog](https://medium.com/asos-techblog).
+###### This post was originally published [here](https://medium.com/asos-techblog/supercharge-your-android-terminal-experience-c71448bf40cc) on the [ASOS Tech Blog](https://medium.com/asos-techblog).
 
 One of the earliest classes I took as a student was an “Introduction to Command Line” module. It covered navigating the filesystem, interacting with the machine, and simple things like that. The lecturer would rhapsodise about how much easier and faster it was. After a few classes, that began to resonate. And by the end, I was using the command line for everything I could.
 

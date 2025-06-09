@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Assisted Injection with Dagger and Hilt: A Double-Edged Sword"
-subtitle: "A deep dive into Assisted Injection and Inversion of Control ― Republished from the Just Eat Takeaway.com Tech Blog"
+subtitle: "A deep dive into Assisted Injection and Inversion of Control"
 image: /images/assisted-inject/hero.webp
 published: false
 ---
 
-<!-- > This post was originally published [here](todo) on the [Just Eat Takeaway.com Tech Blog](https://medium.com/justeattakeaway-tech). -->
-> This post was originally published on the [Just Eat Takeaway.com Tech Blog](https://medium.com/justeattakeaway-tech).
+<!-- ###### This post was originally published [here](todo) on the [Just Eat Takeaway.com Tech Blog](https://medium.com/justeattakeaway-tech). -->
+###### This post was originally published on the [Just Eat Takeaway.com Tech Blog](https://medium.com/justeattakeaway-tech).
 
 
 ![A cute crochet Android character holds up a sword in a forest clearing](/images/assisted-inject/hero.webp)

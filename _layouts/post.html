@@ -4,10 +4,11 @@
 <body>
   <main>
     {% include header.html %}
-    <header>
-      <h1 class="subtitle">{{ page.title }}</h1>
-      <time class="list-secondary-text post-date">{{ page.date | date_to_string: "ordinal", "UK" | nbsp }}</time>
-    </header>
+    <section class="post-title-section">
+      <span class="list-title">{{ page.title }}</span>
+      <br />
+      <span class="list-secondary-text">{{ page.date | date_to_string: "ordinal", "UK" }} ― {{ page.subtitle }}</span>
+    </section>
     <article class="article">
       {{ content }}
     </article>
